@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CEC Lost And Found</title>
+
+    <style>
+        body{
+            margin:0;
+            font-family:Arial;
+            background:#f4f6f9;
+        }
+
+        .header{
+            background:#020a14;
+            color:white;
+            padding:20px;
+            text-align:center;
+        }
+
+        .add-btn,
+        .login-btn,
+        .signup-btn{
+        padding:12px 22px;
+        border-radius:30px;
+        text-decoration:none;
+        font-weight:bold;
+        margin:8px;
+        display:inline-block;
+        }
+
+        .add-btn{
+        background:white;
+        color:#0d6efd;
+        }
+
+        .login-btn{
+        background:#ffc107;
+        color:black;
+        }
+
+        .signup-btn{
+        background:#198754;
+        color:white;
+        }
+
+        .card{
+            background:white;
+            width:60%;
+            margin:25px auto;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        img{
+            border-radius:8px;
+        }
+
+        .claim{
+            background:#198754;
+            color:white;
+            padding:8px 14px;
+            text-decoration:none;
+            border-radius:5px;
+        }
+
+        .claimed{
+            color:red;
+        }
+
+        footer{
+            text-align:center;
+            padding:15px;
+            background:#e9ecef;
+        }
+        .login-btn, .signup-btn{
+            display:inline-block;
+            margin-left:10px;
+            padding:10px 18px;
+            text-decoration:none;
+            border-radius:6px;
+        }
+
+        .login-btn{
+            background:#ffffff;
+            color:#0d6efd;
+        }
+
+        .signup-btn{
+            background:#198754;
+            color:white;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>CEC Lost And Found</h1>
+    <p>Find or report lost items in college</p>
+    <div>
+        <a class="add-btn" href="/add">+ Add Item</a>
+        <a class="login-btn" href="/login">Login</a>
+        <a class="signup-btn" href="/signup">Sign Up</a>
+    </div>
+</div>
+
+{% for item in items %}
+
+<div class="card">
+
+<img src="{{item.image.url}}" width="220">
+
+<h2>{{item.title}}</h2>
+
+<p>{{item.description}}</p>
+
+<p><strong>Location:</strong> {{item.location}}</p>
+
+{% if item.claimed %}
+<h3 class="claimed">CLAIMED</h3>
+{% else %}
+<p>Claimed By:
+{{item.claimed_by.username}}</p>
+<a class="claim" href="/claim/{{item.id}}">Claim Item</a>
+{% endif %}
+
+</div>
+
+{% endfor %}
+
+<footer>
+CEC Lost And Found Portal
+</footer>
+
+</body>
+</html>
+
