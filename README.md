@@ -2,7 +2,7 @@
 
 CEC Lost & Found is a full-stack web application built to simplify reporting, discovering, and claiming lost items within the college campus. The platform provides a secure and organized workflow where students can upload found/lost items, browse listings, claim belongings, and track item ownership using student authentication.
 
-🌐 **Live Demo:** (Add after deployment)
+🌐 **Live Demo:** (https://lost-and-found-portal-1-zygm.onrender.com)
 
 ---
 
