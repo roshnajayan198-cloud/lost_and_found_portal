@@ -68,6 +68,17 @@ padding:15px;
 color:gray;
 }
 
+#image-preview{
+display:none;
+width:100%;
+margin-top:8px;
+margin-bottom:18px;
+border-radius:8px;
+border:1px solid #ccc;
+object-fit:contain;
+max-height:300px;
+}
+
 </style>
 
 </head>
@@ -91,6 +102,8 @@ color:gray;
 
 {{form.as_p}}
 
+<img id="image-preview" src="" alt="Image Preview">
+
 <button>
 Submit Item
 </button>
@@ -102,6 +115,26 @@ Submit Item
 <div class="footer">
 CEC Lost & Found Portal
 </div>
+
+<script>
+document.getElementById('id_image').addEventListener('change', function(event) {
+    var file = event.target.files[0];
+
+    if (!file) {
+        return;
+    }
+
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        var preview = document.getElementById('image-preview');
+        preview.src = e.target.result;
+        preview.style.display = 'block';
+    };
+
+    reader.readAsDataURL(file);
+});
+</script>
 
 </body>
 </html>
